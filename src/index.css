@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forge-obsidian: #0A0A0F;
+  --color-forge-gunmetal: #1A1A24;
+  --color-forge-gold: #D4AF37;
+  --color-forge-arc: #00F0FF;
+}
+
+body {
+  background-color: var(--color-forge-obsidian);
+  color: #E2E8F0;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 100%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l25.98 15v30L30 60 4.02 45V15z' stroke-opacity='0.05' stroke='%23D4AF37' fill='none' stroke-width='1'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+.hud-panel {
+  background: rgba(15, 15, 20, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.05), inset 0 0 20px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud-panel:hover {
+  border-color: rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.12), inset 0 0 25px rgba(0, 0, 0, 0.85);
+}
+
+.hud-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.5), transparent);
+  transition: opacity 0.35s ease;
+}
+
+.hud-panel:hover::before {
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.9), rgba(212, 175, 55, 0.8), transparent);
+}
+
+.armor-plate {
+  background: linear-gradient(135deg, #1A1A24 0%, #0A0A0F 100%);
+  border: 1px solid #2A2A35;
+  border-top: 2px solid rgba(212, 175, 55, 0.8);
+  border-bottom: 2px solid rgba(0, 240, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.05);
+  border-radius: 4px; /* More rigid armor look */
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.armor-plate:hover,
+.hud-panel:hover .armor-plate {
+  border-top-color: #FFD700;
+  border-bottom-color: #00F0FF;
+  border-left-color: rgba(212, 175, 55, 0.4);
+  border-right-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 
+    0 12px 35px rgba(0,0,0,0.95), 
+    0 0 20px rgba(0, 240, 255, 0.25), 
+    inset 0 0 15px rgba(212, 175, 55, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-1px);
+  animation: armorEngage 2s ease-in-out infinite alternate;
+}
+
+@keyframes armorEngage {
+  0% {
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.9), 
+      0 0 14px rgba(0, 240, 255, 0.2), 
+      inset 0 0 10px rgba(212, 175, 55, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 14px 38px rgba(0,0,0,0.95), 
+      0 0 24px rgba(0, 240, 255, 0.4), 
+      inset 0 0 18px rgba(212, 175, 55, 0.22);
+  }
+}
+
+.arc-text {
+  color: #00F0FF;
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.6);
+}
+
+.gold-text {
+  color: #D4AF37;
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.scanline-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0, 240, 255, 0.02) 50%, rgba(0, 240, 255, 0.02));
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  animation: scanlineScroll 10s linear infinite;
+}
+
+@keyframes scanlineScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* Kinetic Command Center Holographic Glitch Keyframes */
+@keyframes cyberGlitch {
+  0% {
+    transform: translate(0);
+    filter: brightness(1.5) contrast(1.15) drop-shadow(0 0 15px rgba(0, 240, 255, 0.5));
+    clip-path: inset(0 0 0 0);
+  }
+  12% {
+    transform: translate(-3px, 1.5px);
+    filter: brightness(1.8) contrast(1.3) drop-shadow(-3px 0 12px rgba(0, 240, 255, 0.9)) drop-shadow(3px 0 12px rgba(212, 175, 55, 0.9));
+    clip-path: inset(18% 0 58% 0);
+  }
+  24% {
+    transform: translate(3px, -1.5px);
+    filter: brightness(1.2) contrast(1.25);
+    clip-path: inset(42% 0 35% 0);
+  }
+  38% {
+    transform: translate(-2px, -1px);
+    filter: brightness(1.7) drop-shadow(0 0 18px rgba(0, 240, 255, 0.7));
+    clip-path: inset(68% 0 12% 0);
+  }
+  52% {
+    transform: translate(2px, 1px);
+    filter: brightness(0.95);
+    clip-path: inset(10% 0 78% 0);
+  }
+  68% {
+    transform: translate(-1px, 0);
+    filter: brightness(1.3) drop-shadow(0 0 10px rgba(212, 175, 55, 0.6));
+    clip-path: inset(85% 0 5% 0);
+  }
+  82% {
+    transform: translate(1px, -1px);
+    filter: brightness(1.15);
+    clip-path: inset(0 0 0 0);
+  }
+  100% {
+    transform: translate(0);
+    filter: brightness(1) contrast(1) drop-shadow(0 0 0 transparent);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.glitch-flash {
+  animation: cyberGlitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+/* Laser sweep keyframe */
+@keyframes laserSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.laser-sweep-line {
+  animation: laserSweep 0.6s ease-out forwards;
+}
+
+/* Custom High-Density Cyber Scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 16, 0.85);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.7);
+}
+
+

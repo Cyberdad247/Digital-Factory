@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create, update: if isOwner(userId);
+      allow delete: if false;
+    }
+
+    match /forged_clis/{cliId} {
+      allow get, list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /forge_states/{stateId} {
+      allow get: if isSignedIn() && (resource == null || resource.data.authorUid == request.auth.uid || stateId == 'forge_state_' + request.auth.uid);
+      allow list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update: if isSignedIn() && (resource.data.authorUid == request.auth.uid || request.resource.data.authorUid == request.auth.uid);
+      allow delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /worldtree_sources/{sourceId} {
+      allow get, list: if isSignedIn() && (resource.data.authorUid == request.auth.uid || resource.data.authorUid == 'SYSTEM_CANONICAL');
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /cloudbrain_queries/{queryId} {
+      allow get, list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /anya_enhancements/{enhancementId} {
+      allow get, list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /blueprint_artifacts/{artifactId} {
+      allow get, list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /workspace_sync_records/{recordId} {
+      allow get, list: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /council_debates/{debateId} {
+      allow get, list: if isSignedIn() && (resource.data.authorUid == request.auth.uid || resource.data.authorUid == 'SYSTEM_CANONICAL');
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+
+    match /genesis_cartridges/{cartridgeId} {
+      allow get, list: if isSignedIn() && (resource.data.authorUid == request.auth.uid || resource.data.authorUid == 'SYSTEM_CANONICAL');
+      allow create: if isSignedIn() && request.resource.data.authorUid == request.auth.uid;
+      allow update, delete: if isSignedIn() && resource.data.authorUid == request.auth.uid;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# l0_fast_context.json
+<!-- Materialized via Lady Mnemosyne Isomorphic FileTree Law -->
+<!-- Canonical Block ID: viking://memory/l0 -->
+<!-- Master Hash: sha256:99ab31c -->
+
+## Description
+DuckDB/WASM in-memory vector cache descriptor
+
+## Status
+Synchronized with NotebookLM Cloudbrain via Model Context Protocol (MCP).

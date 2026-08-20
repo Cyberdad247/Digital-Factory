@@ -1,0 +1,226 @@
+{
+  "entities": {
+    "ForgedCLI": {
+      "title": "ForgedCLI",
+      "description": "Agentic CLI weapon forged in Camelot Titan Omni-Forge",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "binaryName": { "type": "string", "maxLength": 128 },
+        "version": { "type": "string", "maxLength": 32 },
+        "category": { "type": "string", "maxLength": 64 },
+        "skillMd": { "type": "string", "maxLength": 65536 },
+        "testMd": { "type": "string", "maxLength": 65536 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "binaryName", "version", "category", "authorUid", "createdAt"]
+    },
+    "BlueprintArtifact": {
+      "title": "BlueprintArtifact",
+      "description": "14-stage blueprint operating system task artifact",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "stage": { "type": "string", "maxLength": 64 },
+        "title": { "type": "string", "maxLength": 256 },
+        "content": { "type": "string", "maxLength": 65536 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "maxLength": 32 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "stage", "title", "authorUid", "status", "createdAt"]
+    },
+    "WorkspaceSyncRecord": {
+      "title": "WorkspaceSyncRecord",
+      "description": "Metadata for Google Drive, Sheets, Docs, and Calendar synchronized items",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "service": { "type": "string", "maxLength": 32 },
+        "externalId": { "type": "string", "maxLength": 256 },
+        "title": { "type": "string", "maxLength": 256 },
+        "url": { "type": "string", "maxLength": 1024 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "syncedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "service", "externalId", "title", "authorUid", "syncedAt"]
+    },
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user profile and preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "maxLength": 128 },
+        "email": { "type": "string", "maxLength": 256 },
+        "displayName": { "type": "string", "maxLength": 128 },
+        "photoURL": { "type": "string", "maxLength": 512 },
+        "lastActiveAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["uid", "email"]
+    },
+    "ForgeState": {
+      "title": "ForgeState",
+      "description": "Auto-saved snapshot of the Titan Omni-Forge state and player configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "player": { "type": "object" },
+        "forgedCLIs": { "type": "array" },
+        "activeLeases": { "type": "array" },
+        "toolName": { "type": "string", "maxLength": 128 },
+        "category": { "type": "string", "maxLength": 64 },
+        "codebaseInput": { "type": "string", "maxLength": 65536 },
+        "autoSaveCount": { "type": "number" },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "authorUid", "updatedAt"]
+    },
+    "WorldtreeSource": {
+      "title": "WorldtreeSource",
+      "description": "NotebookLM Cloudbrain grounded source knowledge and research documents",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "title": { "type": "string", "maxLength": 256 },
+        "content": { "type": "string", "maxLength": 65536 },
+        "type": { "type": "string", "maxLength": 64 },
+        "authorAgent": { "type": "string", "maxLength": 128 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "summary": { "type": "string", "maxLength": 4096 },
+        "vikingUri": { "type": "string", "maxLength": 512 },
+        "groundedScore": { "type": "number" },
+        "tokenEstimate": { "type": "number" },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "title", "content", "authorUid", "createdAt"]
+    },
+    "CloudbrainQueryRecord": {
+      "title": "CloudbrainQueryRecord",
+      "description": "Grounded query execution record and citation telemetry from NotebookLM Worldtree",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "query": { "type": "string", "maxLength": 2048 },
+        "answer": { "type": "string", "maxLength": 65536 },
+        "toonRepresentation": { "type": "string", "maxLength": 65536 },
+        "groundedScore": { "type": "number" },
+        "citations": { "type": "array" },
+        "latencyMs": { "type": "number" },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "query", "answer", "authorUid", "createdAt"]
+    },
+    "AnyaPromptEnhancement": {
+      "title": "AnyaPromptEnhancement",
+      "description": "Anya Ω prompt enhancement records and 3-Tier Arthurian specifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "originalPrompt": { "type": "string", "maxLength": 8192 },
+        "enhancedPrompt": { "type": "string", "maxLength": 65536 },
+        "category": { "type": "string", "maxLength": 64 },
+        "targetStudio": { "type": "string", "maxLength": 64 },
+        "invariantsAdded": { "type": "array" },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "originalPrompt", "enhancedPrompt", "authorUid", "createdAt"]
+    },
+    "CouncilDebate": {
+      "title": "CouncilDebate",
+      "description": "Archmage Council multi-agent Socratic debate session and collective brainstorming history",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "topic": { "type": "string", "maxLength": 512 },
+        "mode": { "type": "string", "maxLength": 64 },
+        "messages": { "type": "array" },
+        "ambiguityScore": { "type": "number" },
+        "consensusPercentage": { "type": "number" },
+        "activeArchmages": { "type": "array" },
+        "crystallizedPRD": { "type": "string", "maxLength": 65536 },
+        "z3Verified": { "type": "boolean" },
+        "pinnedInvariants": { "type": "array" },
+        "notes": { "type": "string", "maxLength": 8192 },
+        "tags": { "type": "array" },
+        "forkedCartridgeIds": { "type": "array" },
+        "forkCount": { "type": "number" },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "topic", "mode", "authorUid", "createdAt", "updatedAt"]
+    },
+    "GenesisCartridge": {
+      "title": "GenesisCartridge",
+      "description": "Genesis Intake Cartridge instance forked from council debate strategies or initialized directly",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 128 },
+        "name": { "type": "string", "maxLength": 256 },
+        "description": { "type": "string", "maxLength": 4096 },
+        "originDebateId": { "type": "string", "maxLength": 128 },
+        "originDebateTopic": { "type": "string", "maxLength": 512 },
+        "forkTimestamp": { "type": "string", "maxLength": 64 },
+        "inheritedInvariants": { "type": "array" },
+        "prdContent": { "type": "string", "maxLength": 65536 },
+        "targetArchetype": { "type": "string", "maxLength": 64 },
+        "ingressConfig": { "type": "object" },
+        "crucibleReport": { "type": "object" },
+        "scaffoldBundle": { "type": "object" },
+        "status": { "type": "string", "maxLength": 64 },
+        "authorUid": { "type": "string", "maxLength": 128 },
+        "createdAt": { "type": "string", "maxLength": 64 },
+        "updatedAt": { "type": "string", "maxLength": 64 }
+      },
+      "required": ["id", "name", "authorUid", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/council_debates/{debateId}": {
+      "schema": { "$ref": "#/entities/CouncilDebate" },
+      "description": "Persisted Archmage Council debate sessions and brainstorming history"
+    },
+    "/genesis_cartridges/{cartridgeId}": {
+      "schema": { "$ref": "#/entities/GenesisCartridge" },
+      "description": "Forked and active Genesis Intake Cartridge instances"
+    },
+    "/forge_states/{stateId}": {
+      "schema": { "$ref": "#/entities/ForgeState" },
+      "description": "Collection of periodic auto-saved Titan Omni-Forge states"
+    },
+    "/worldtree_sources/{sourceId}": {
+      "schema": { "$ref": "#/entities/WorldtreeSource" },
+      "description": "Collection of Cloudbrain Worldtree NotebookLM grounded knowledge sources"
+    },
+    "/cloudbrain_queries/{queryId}": {
+      "schema": { "$ref": "#/entities/CloudbrainQueryRecord" },
+      "description": "Historical audit log of NotebookLM MCP queries and citations"
+    },
+    "/anya_enhancements/{enhancementId}": {
+      "schema": { "$ref": "#/entities/AnyaPromptEnhancement" },
+      "description": "Saved prompt enhancements and 3-Tier specification harnesses compiled by Anya Ω"
+    },
+    "/forged_clis/{cliId}": {
+      "schema": { "$ref": "#/entities/ForgedCLI" },
+      "description": "Collection of forged agentic CLIs per user"
+    },
+    "/blueprint_artifacts/{artifactId}": {
+      "schema": { "$ref": "#/entities/BlueprintArtifact" },
+      "description": "Collection of blueprint execution artifacts"
+    },
+    "/workspace_sync_records/{recordId}": {
+      "schema": { "$ref": "#/entities/WorkspaceSyncRecord" },
+      "description": "Audit log of Google Workspace synced files, sheets, docs, and calendar events"
+    },
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile records"
+    }
+  }
+}

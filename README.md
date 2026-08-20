@@ -1,11 +1,14 @@
-<div align="center">
+# Camelot-OS PWA & Hydra Loop Architecture
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+## Quickstart
+1. `npm install`
+2. `npm run dev`
 
-  <h1>Built with AI Studio</h2>
+## Deployment
+- Vercel/Netlify: Ensure `npm run build` is called and `dist/server.cjs` is set as the runtime entry point if custom server functionality is required. 
+- Environment: 8GB edge-node hardware ceiling.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
-
-  <a href="https://aistudio.google.com/apps">Start building</a>
-
-</div>
+## Architecture
+- Frontend: Next.js/Tailwind CSS
+- Backend: Express API (mimicking loop-engineering)
+- Persistence: JSON Provenance Ledger (`data/ledger.json`)

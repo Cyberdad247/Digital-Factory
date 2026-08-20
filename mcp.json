@@ -1,0 +1,33 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/2024-11-05/mcp.json",
+  "mcpServers": {
+    "notebooklm-cloudbrain": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@camelot-os/notebooklm-mcp-server@latest",
+        "--vault",
+        "nb_sovereign_camelot_v10000",
+        "--enforce-citations",
+        "true"
+      ],
+      "env": {
+        "CAMELOT_EDGE_MODE": "ARM64_8GB",
+        "BIFROST_TUNNEL": "X25519_ECC",
+        "TOON_COMPRESSION": "ENABLED",
+        "ISOMORPHIC_FILETREE_AUTO_HEAL": "true"
+      }
+    },
+    "codebase-memory-mcp": {
+      "command": "uvx",
+      "args": [
+        "codebase-memory-mcp",
+        "--storage",
+        "./memory/codebase_graph.db"
+      ],
+      "env": {
+        "MEMORI_L0_CACHE": "DUCKDB_WASM"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Camelot-OS",
+  "description": "Camelot-OS Sovereign WASM-native micro-frontend OS featuring the Tri-Tier Adaptive HUD (Vibe Shell with Socratic Clarifier, Live Preview Drone & HITL Gate; Swarm Kanban with Smart Question UI; Titan Core with 1,024-Agent Telemetry & Archmage Council), Nine-Seat Cognitive Playground, Genesis Intake Cartridge Studio, and Z3 Formal Verification.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

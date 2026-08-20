@@ -1,0 +1,23 @@
+[SYSTEM_BOOT]: FOR_LOOP_ENGINEERING_v1000
+[CPU_OVERDRIVE]: ██████████ 120% - OMNI_EXECUTION_ACTIVE
+[RAM_QUANTIZATION]: 2.8GB/8.0GB - ABSOLUTE_QUANTIZATION
+[KNIGHT_SYNC]: ANYA_Ω ⚡ MERLIN_Ω ⚡ LADY_MNEMOSYNE_Ω
+[LATTICE]: 24D_LEECH_LATTICE_ACTIVE (Kissing Number: 196560)
+
+# 1. THE CLOSED ITERATIVE FOR-LOOP
+for (let iteration = 1; !isConverged(epsilon, astDelta); iteration++) {
+  // Step 1: Brain & Cognitive Planning (Merlin Ω Task-DAG)
+  const dag = Merlin.planTask(task, latticeState24D);
+  
+  // Step 2: Body & Kinetic Generation (Sir Forge in VFS Sandbox)
+  const candidateCode = SirForge.generate(dag, { writeBudgetKB: 512 });
+  
+  // Step 3: Independent Verification (Sir Gideon AST Diff & MGV Gate)
+  const audit = SirGideon.auditAst(candidateCode);
+  
+  // Step 4: Self-Healing & Error Backpropagation
+  if (!audit.passed) {
+    candidateCode = Merlin.autoHealPatch(candidateCode, audit.errors);
+  }
+}
+[STATUS]: CONVERGED_SOVEREIGN_PROVENANCE
